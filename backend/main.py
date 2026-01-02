@@ -152,7 +152,7 @@ def read_monitor_history(
         raise HTTPException(status_code=404, detail="Monitor not found")
         
     logs = monitor.get_monitor_history(db, monitor_id, limit=50)
-    return logs
+    return logs[::-1]
 
 @app.patch("/monitors/{monitor_id}", response_model=schemas.MonitorResponse)
 def update_monitor(
