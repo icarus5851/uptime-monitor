@@ -38,6 +38,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+@app.get("/")
+def health_check():
+    return {"status": "ok", "message": "Overseer Backend is running"}
 
 
 @app.post("/auth/register", response_model=schemas.UserResponse)
